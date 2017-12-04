@@ -1,0 +1,7 @@
+.toolsbox {
+  background-color: red;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: '10%'
+}

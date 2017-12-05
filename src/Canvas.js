@@ -5,8 +5,8 @@ class Canvas extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      color: 'black',
-      lineWidth: 15,
+      color: 'red',
+      lineWidth: 35,
       elements: []
     }
   }

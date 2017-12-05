@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Tools.css'
-import Logo from "./art/logo.png"
+import palette from "./art/palette.png"
 import { Image } from 'react-bootstrap'
 
 class Tools extends Component {
@@ -35,7 +35,7 @@ class Tools extends Component {
     return (
       <div className='toolsbox'>
         <div>
-          <Image className='responsive, logo' src={Logo} alt="Colors"/>
+          <Image responsive='true' className='palette' src={palette} alt="Colors"/>
         </div>
       </div>
     )

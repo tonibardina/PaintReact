@@ -1,7 +1,12 @@
 .toolsbox {
   background-color: red;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  max-width: '10%'
+  border-radius: 10px;
+  margin: 10
+}
+
+.palette {
+  max-width: 30px;
 }

@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
 import './Tools.css'
-import { Image, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
-import { BlockPicker } from 'react-color'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { GithubPicker } from 'react-color'
 
 class Tools extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      visble: false
     }
   }
-  
-  showTools = () => {
-    this.setState({
-      visble: true
-    });
+
+  handleChangeColorPicker = (color) => {
+    this.props.changeColor(color.hex)
   }
 
   render () {
@@ -22,14 +19,14 @@ class Tools extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Paint</a>
+            <a style={{color: this.props.color}}>Paint</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
           <NavItem eventKey={1} href="#">Undo</NavItem>
           <NavItem eventKey={2} href="#">Redo</NavItem>
           <NavDropdown eventKey={3} title="Color" id="basic-nav-dropdown">
-            <BlockPicker />
+            <GithubPicker onChangeComplete={ this.handleChangeColorPicker }/>
           </NavDropdown>
           <NavDropdown eventKey={4} title="Line" id="basic-nav-dropdown">
             <MenuItem eventKey={4.1}>Action</MenuItem>

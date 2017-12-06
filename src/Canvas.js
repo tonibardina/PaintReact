@@ -5,8 +5,8 @@ class Canvas extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      color: 'pink',
-      lineWidth: 21,
+      color: 'red',
+      lineWidth: 35,
       elements: []
     }
   }
@@ -42,45 +42,17 @@ class Canvas extends Component {
       context.lineTo(mouse.x, mouse.y)
       context.stroke()
     }
-
-    var history = {
-      redo_list: [],
-      undo_list: [],
-      saveState: function(canvas, list, keepRedo) {
-        keepRedo = keepRedo || false
-        if (!keepRedo) {
-          this.redo_list = []
-        }
-        (list || this.undo_list).push(canvas.toDataURL())
-      },
-      undo: function (canvas, ctx) {
-        this.restoreState(canvas, ctx, this.undo_list, this.redo_list)
-      },
-      redo: function (canvas, ctx) {
-        this.restoreState(canvas, ctx, this.redo_list, this.undo_list)
-      },
-      restoreState: function (canvas, ctx, pop, push) {
-        if (pop.length) {
-          this.saveState(canvas, push, true)
-          var restoreState = pop.pop()
-          var img = new Element('img', {'src': restoreState})
-          img.onload = function () {
-            ctx.clearRect(0, 0, 600, 400)
-            ctx.drawImage(img, 0, 0, 600, 400, 0, 0, 600, 400)
-          }
-        }
-      }
-    }
   }
+  
   render () {
     var height = 'innerHeight' in window
-               ? window.innerHeight
-               : document.documentElement.offsetHeight
+              ? window.innerHeight
+              : document.documentElement.offsetHeight
     var width = 'innerWidth' in window
-               ? window.innerWidth
-               : document.documentElement.offsetWidth
+              ? window.innerWidth
+              : document.documentElement.offsetWidth
     return (
-      <div className='container-fluid' style={{height: height, width: width}} ref='sketch'>
+      <div className='canvasContainer' style={{height: height, width: width}} ref='sketch'>
         <canvas ref='canvas' />
       </div>
     )

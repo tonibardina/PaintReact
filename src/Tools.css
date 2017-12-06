@@ -1,12 +1,3 @@
-.toolsbox {
-  background-color: red;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  margin: 10
-}
-
-.palette {
-  max-width: 30px;
+.navbar {
+  margin-bottom: 0px;
 }

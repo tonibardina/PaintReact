@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Tools.css'
-import palette from "./art/palette.png"
-import { Image } from 'react-bootstrap'
+import { Image, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { BlockPicker } from 'react-color'
 
 class Tools extends Component {
   constructor (props) {
@@ -17,27 +17,25 @@ class Tools extends Component {
     });
   }
 
-  tools = () => {
-    if (this.state.visible) {
-      return (
-        <div>
-          <ul>
-            <li>
-              <img src="" alt="Colors"/>
-            </li>
-          </ul>
-        </div>
-      )
-    }
-  }
-
   render () {
     return (
-      <div className='toolsbox'>
-        <div>
-          <Image responsive='true' className='palette' src={palette} alt="Colors"/>
-        </div>
-      </div>
+      <Navbar>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a href="#">Paint</a>
+          </Navbar.Brand>
+        </Navbar.Header>
+        <Nav>
+          <NavItem eventKey={1} href="#">Undo</NavItem>
+          <NavItem eventKey={2} href="#">Redo</NavItem>
+          <NavDropdown eventKey={3} title="Color" id="basic-nav-dropdown">
+            <BlockPicker />
+          </NavDropdown>
+          <NavDropdown eventKey={4} title="Line" id="basic-nav-dropdown">
+            <MenuItem eventKey={4.1}>Action</MenuItem>
+          </NavDropdown>
+        </Nav>
+      </Navbar>
     )
   }
 }

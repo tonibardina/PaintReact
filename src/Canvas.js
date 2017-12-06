@@ -5,8 +5,8 @@ class Canvas extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      color: 'red',
-      lineWidth: 35,
+      color: 'pink',
+      lineWidth: 21,
       elements: []
     }
   }
@@ -80,7 +80,7 @@ class Canvas extends Component {
                ? window.innerWidth
                : document.documentElement.offsetWidth
     return (
-      <div className='canvasContainer' style={{height: height, width: width}} ref='sketch'>
+      <div className='container-fluid' style={{height: height, width: width}} ref='sketch'>
         <canvas ref='canvas' />
       </div>
     )

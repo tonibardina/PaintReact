@@ -5,55 +5,53 @@ class Canvas extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      color: 'red',
       lineWidth: 35,
       elements: []
     }
   }
 
   componentDidMount () {
-    const canvas = this.refs.canvas
+    var canvas = document.querySelector('#canvas')
     const context = canvas.getContext('2d')
     const sketch = this.refs.sketch
     let sketchStyle = getComputedStyle(sketch)
     canvas.width = parseInt(sketchStyle.getPropertyValue('width'), 10)
     canvas.height = parseInt(sketchStyle.getPropertyValue('height'), 10)
-    let mouse = {x: 0, y: 0}
+
+    var mouse = {x: 0, y: 0}
     /* Mouse Capturing Work */
     canvas.addEventListener('mousemove', function (e) {
       mouse.x = e.pageX - this.offsetLeft
       mouse.y = e.pageY - this.offsetTop
-    })
+    }, false)
     /* Drawing on Paint App */
-    context.lineWidth = this.state.lineWidth
-    context.strokeStyle = this.state.color
-    context.lineJoin = 'round'
-    context.lineCap = 'round'
-    context.imageSmoothingQuality = 'high'
     canvas.addEventListener('mousedown', function (e) {
       context.beginPath()
       context.moveTo(mouse.x, mouse.y)
-      canvas.addEventListener('mousemove', onPaint)
-    })
+      canvas.addEventListener('mousemove', onPaint, false)
+    }, false)
     canvas.addEventListener('mouseup', function () {
-      canvas.removeEventListener('mousemove', onPaint)
-    })
-    let onPaint = () => {
+      canvas.removeEventListener('mousemove', onPaint, false)
+    }, false)
+    var onPaint = function () {
       context.lineTo(mouse.x, mouse.y)
       context.stroke()
     }
   }
-  
+
+  setBrush = () => {
+    let context = document.querySelector('#canvas').getContext('2d')
+    context.lineWidth = this.props.lineWidth
+    context.lineJoin = 'round'
+    context.lineCap = 'round'
+    context.strokeStyle = this.props.color
+        console.log(context)
+  }
+
   render () {
-    var height = 'innerHeight' in window
-              ? window.innerHeight
-              : document.documentElement.offsetHeight
-    var width = 'innerWidth' in window
-              ? window.innerWidth
-              : document.documentElement.offsetWidth
     return (
-      <div className='canvasContainer' style={{height: height, width: width}} ref='sketch'>
-        <canvas ref='canvas' />
+      <div className='canvasContainer' style={{height: window.innerHeight, width: '100%'}} ref='sketch'>
+        <canvas ref={'canvas'} id='canvas' onMouseOver={this.setBrush} />
       </div>
     )
   }

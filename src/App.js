@@ -18,10 +18,16 @@ class App extends Component {
     })
   }
 
+  changeLineWidth = (value) => {
+    this.setState({
+      lineWidth: value
+    })
+  }
+
   render () {
     return (
       <div className='container-fluid'>
-        <Tools color={this.state.color} changeColor={this.changeColor}/>
+        <Tools color={this.state.color} changeColor={this.changeColor} changeLineWidth={this.changeLineWidth} />
         <Canvas lineWidth={this.state.lineWidth} color={this.state.color}/>
       </div>
     )

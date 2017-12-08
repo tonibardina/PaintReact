@@ -6,19 +6,22 @@ class Canvas extends Component {
     super(props)
     this.state = {
       lineWidth: 35,
-      elements: []
+      context: []
     }
   }
 
   componentDidMount () {
-    var canvas = document.querySelector('#canvas')
+    /* Define Workspace */
+    const canvas = document.querySelector('#canvas')
     const context = canvas.getContext('2d')
     const sketch = this.refs.sketch
     let sketchStyle = getComputedStyle(sketch)
     canvas.width = parseInt(sketchStyle.getPropertyValue('width'), 10)
     canvas.height = parseInt(sketchStyle.getPropertyValue('height'), 10)
+    /* Send Workspace info to father */
+    this.props.setWidthAndHeight(canvas.width, canvas.height)
 
-    var mouse = {x: 0, y: 0}
+    let mouse = {x: 0, y: 0}
     /* Mouse Capturing Work */
     canvas.addEventListener('mousemove', function (e) {
       mouse.x = e.pageX - this.offsetLeft
@@ -33,7 +36,10 @@ class Canvas extends Component {
     canvas.addEventListener('mouseup', function () {
       canvas.removeEventListener('mousemove', onPaint, false)
     }, false)
-    var onPaint = function () {
+    canvas.addEventListener('mouseover', function () {
+      canvas.removeEventListener('mousemove', onPaint, false)
+    }, false)
+    let onPaint = function () {
       context.lineTo(mouse.x, mouse.y)
       context.stroke()
     }
@@ -45,13 +51,26 @@ class Canvas extends Component {
     context.lineJoin = 'round'
     context.lineCap = 'round'
     context.strokeStyle = this.props.color
-        console.log(context)
+    context.imageSmoothingQuality = 'high'
+  }
+
+  saveDrawings = () => {
+    const canvas = document.querySelector('#canvas')
+    this.props.saveDrawings(canvas)
   }
 
   render () {
     return (
-      <div className='canvasContainer' style={{height: window.innerHeight, width: '100%'}} ref='sketch'>
-        <canvas ref={'canvas'} id='canvas' onMouseOver={this.setBrush} />
+      <div 
+        className='canvasContainer' 
+        style={{height: window.innerHeight, width: '100%'}} 
+        ref='sketch'>
+        <canvas 
+          ref={'canvas'} 
+          id='canvas' 
+          onMouseOver={this.setBrush} 
+          onMouseUp={this.saveDrawings} 
+        />
       </div>
     )
   }

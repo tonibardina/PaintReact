@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Tools.css'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap'
 import { BlockPicker } from 'react-color'
 import Line1 from './art/1pxLine.png'
 import Line3 from './art/3pxLine.png'
@@ -18,20 +18,12 @@ class Tools extends Component {
     this.props.changeColor(color.hex)
   }
 
-  setLine = () => {
-    this.props.changeLineWidth(1)
+  setLine = (e) => {
+    this.props.changeLineWidth(e.currentTarget.name)
   }
 
-  setLinex3 = (e) => {
-    this.props.changeLineWidth(3)
-  }
-
-  setLinex5 = (e) => {
-    this.props.changeLineWidth(5)
-  }
-
-  setLinex10 = (e) => {
-    this.props.changeLineWidth(10)
+  undo = () => {
+    this.props.undoDrawing()
   }
 
   render () {
@@ -43,21 +35,20 @@ class Tools extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1} href="#">Undo</NavItem>
-          <NavItem eventKey={2} href="#">Redo</NavItem>
+          <NavItem onClick={this.undo} eventKey={1} href="#"><i className="fa fa-undo" aria-hidden="true"></i></NavItem>
+          <NavItem eventKey={2} href="#"><i className="fa fa-repeat" aria-hidden="true"></i></NavItem>
           <NavDropdown eventKey={3} title="Color" id="basic-nav-dropdown">
-            <BlockPicker triangle={'start'} color={this.props.color} colors={
+            <BlockPicker color={this.props.color} colors={
               [
                 '#E8DAB2', 
                 '#4F6D7A', 
                 '#C0D6DF', 
                 '#EAEAEA', 
                 '#D44D5C', 
-                '#006992', 
                 '#083452', 
                 '#FF6B37', 
                 '#ECA400', 
-                '#EAF8BF', 
+                '#EAF8BF',  
                 '#006992',
                 '#95FF9F',
                 '#136F63',
@@ -73,10 +64,10 @@ class Tools extends Component {
             } onChangeComplete={ this.handleChangeColorPicker }/>
           </NavDropdown>
           <NavDropdown eventKey={4} title="Line" id="basic-nav-dropdown">
-            <img style={{padding: 10}} src={Line1} alt='1px Line' onClick={this.setLine} />
-            <img style={{padding: 10}} src={Line3} alt='1px Line' onClick={this.setLinex3} />
-            <img style={{padding: 10}} src={Line5} alt='1px Line' onClick={this.setLinex5} />
-            <img style={{padding: 10}} src={Line10} alt='1px Line' onClick={this.setLinex10} />
+            <img name={1} style={{padding: 10}} src={Line1} alt='1px Line' onClick={this.setLine} />
+            <img name={3} style={{padding: 10}} src={Line3} alt='3px Line' onClick={this.setLine} />
+            <img name={5} style={{padding: 10}} src={Line5} alt='5px Line' onClick={this.setLine} />
+            <img name={10} style={{padding: 10}} src={Line10} alt='10px Line' onClick={this.setLine} />
           </NavDropdown>
         </Nav>
       </Navbar>

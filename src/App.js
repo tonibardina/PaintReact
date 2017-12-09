@@ -8,8 +8,8 @@ class App extends Component {
     this.state = {
       color: 'red',
       lineWidth: 10,
-      undo: [],
-      redo: [],
+      undo_list: [],
+      redo_list: [],
       canvasWidth: 'Number',
       canvasHeight: 'Number',
     }
@@ -34,45 +34,54 @@ class App extends Component {
     })
   }
 
-  saveDrawings = (canvas) => {
-    this.setState({
-      undo: [...this.state.undo, canvas.toDataURL()]
-    })
+  saveState = (canvas, list, keep_redo) => {
+    keep_redo = keep_redo || false
+    if(!keep_redo) {
+      this.setState({
+        redo_list: []
+      })
+    }
+    (list || this.state.undo_list).push(canvas.toDataURL())   
   }
 
-  undoDrawing = () => {
+  restoreState = (canvas, context, pop, push) => {
     const width = this.state.canvasWidth
     const height = this.state.canvasHeight
-    let draw = this.state.undo[this.state.undo.length - 2]
-    let context = document.querySelector('#canvas').getContext('2d')
-    let image = new Image()
-    if (this.state.undo.length > 1) {
-      this.state.undo.pop()
-      image.src = draw
-      image.onload = function(){
-        console.log(width )
+
+    if(pop.length) {
+      this.saveState(canvas, push, true)
+      let restore_state = pop.pop()
+      let image = new Image()
+      image.src = restore_state
+      console.log(this.state)
+      image.onload = function () {
+        console.log([restore_state])
         context.clearRect(0, 0, width, height)
         context.drawImage(image, 0, 0, width, height, 0, 0, width, height)
       }
-    } else {
-      this.setState({
-        undo: []
-      })
-      context.clearRect(0, 0, width, height)
     }
+  }
+
+  undo = (canvas, context) => {
+    this.restoreState(canvas, context, this.state.undo_list, this.state.redo_list);
+  }
+
+  redo = (canvas, context) => {
+    this.restoreState(canvas, context, this.state.redo_list, this.state.undo_list);
   }
 
   render () {
     return (
       <div className='container-fluid'>
-        <Tools 
-          undoDrawing={this.undoDrawing} 
+        <Tools
+          undo={this.undo}
+          redo={this.redo}
           color={this.state.color} 
           changeColor={this.changeColor} 
           changeLineWidth={this.changeLineWidth} 
         />
         <Canvas 
-          saveDrawings={this.saveDrawings} 
+          saveState={this.saveState} 
           lineWidth={this.state.lineWidth} 
           color={this.state.color}
           setWidthAndHeight={this.setWidthAndHeight}

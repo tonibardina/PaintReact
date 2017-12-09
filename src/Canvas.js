@@ -54,9 +54,9 @@ class Canvas extends Component {
     context.imageSmoothingQuality = 'high'
   }
 
-  saveDrawings = () => {
+  saveState = () => {
     const canvas = document.querySelector('#canvas')
-    this.props.saveDrawings(canvas)
+    this.props.saveState(canvas)
   }
 
   render () {
@@ -69,7 +69,7 @@ class Canvas extends Component {
           ref={'canvas'} 
           id='canvas' 
           onMouseOver={this.setBrush} 
-          onMouseUp={this.saveDrawings} 
+          onMouseDown={this.saveState} 
         />
       </div>
     )

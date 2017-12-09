@@ -23,7 +23,15 @@ class Tools extends Component {
   }
 
   undo = () => {
-    this.props.undoDrawing()
+    const canvas = document.querySelector('#canvas')
+    const context = canvas.getContext('2d')
+    this.props.undo(canvas, context)
+  }
+
+  redo = () => {
+    const canvas = document.querySelector('#canvas')
+    const context = canvas.getContext('2d')
+    this.props.redo(canvas, context)
   }
 
   render () {
@@ -35,8 +43,20 @@ class Tools extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem onClick={this.undo} eventKey={1} href="#"><i className="fa fa-undo" aria-hidden="true"></i></NavItem>
-          <NavItem eventKey={2} href="#"><i className="fa fa-repeat" aria-hidden="true"></i></NavItem>
+          <NavItem 
+            onClick={this.undo} 
+            eventKey={1} 
+            name='undo'
+          >
+            <i className="fa fa-undo" aria-hidden="true"></i>
+          </NavItem>
+          <NavItem 
+            onClick={this.redo} 
+            eventKey={2} 
+            name='redo'
+          >
+              <i className="fa fa-repeat" aria-hidden="true"></i>
+          </NavItem>
           <NavDropdown eventKey={3} title="Color" id="basic-nav-dropdown">
             <BlockPicker color={this.props.color} colors={
               [

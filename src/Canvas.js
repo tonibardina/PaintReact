@@ -19,7 +19,7 @@ class Canvas extends Component {
     canvas.width = parseInt(sketchStyle.getPropertyValue('width'), 10)
     canvas.height = parseInt(sketchStyle.getPropertyValue('height'), 10)
     /* Send Workspace info to father */
-    this.props.setWidthAndHeight(canvas.width, canvas.height)
+    this.props.setCanvasWidthAndHeight(canvas.width, canvas.height)
 
     let mouse = {x: 0, y: 0}
     /* Mouse Capturing Work */
@@ -27,7 +27,7 @@ class Canvas extends Component {
       mouse.x = e.pageX - this.offsetLeft
       mouse.y = e.pageY - this.offsetTop
     }, false)
-    /* Drawing on Paint App */
+    /* Drawing on canvas */
     canvas.addEventListener('mousedown', function (e) {
       context.beginPath()
       context.moveTo(mouse.x, mouse.y)

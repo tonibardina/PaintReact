@@ -27,7 +27,7 @@ class App extends Component {
     })
   }
 
-  setWidthAndHeight = (valueX, valueY) => {
+  setCanvasWidthAndHeight = (valueX, valueY) => {
     this.setState({
       canvasHeight: valueY,
       canvasWidth: valueX
@@ -84,7 +84,7 @@ class App extends Component {
           saveState={this.saveState} 
           lineWidth={this.state.lineWidth} 
           color={this.state.color}
-          setWidthAndHeight={this.setWidthAndHeight}
+          setCanvasWidthAndHeight={this.setCanvasWidthAndHeight}
         />
       </div>
     )

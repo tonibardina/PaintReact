@@ -43,6 +43,7 @@ class Canvas extends Component {
   }
 
   setBrush = () => {
+    /* Set brush settings */
     let context = document.querySelector('#canvas').getContext('2d')
     context.lineWidth = this.props.lineWidth
     context.lineJoin = 'round'
@@ -52,6 +53,7 @@ class Canvas extends Component {
   }
 
   saveState = () => {
+    /* Save canvas state */
     const canvas = document.querySelector('#canvas')
     this.props.saveState(canvas)
   }

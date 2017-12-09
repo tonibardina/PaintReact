@@ -62,23 +62,34 @@ class App extends Component {
     }
   }
 
-  undo = (canvas, context) => {
-    this.restoreState(canvas, context, this.state.undo_list, this.state.redo_list);
+  undoRedo = (canvas, context, value) => {
+    if (value === 'undo') {
+      this.restoreState(canvas, context, this.state.undo_list, this.state.redo_list)
+    } else {
+      this.restoreState(canvas, context, this.state.redo_list, this.state.undo_list)
+    }
   }
 
-  redo = (canvas, context) => {
-    this.restoreState(canvas, context, this.state.redo_list, this.state.undo_list);
+  clearWorkspace = () => {
+    const width = this.state.canvasWidth
+    const height = this.state.canvasHeight
+    const context = document.querySelector('#canvas').getContext('2d')
+    this.setState({
+      undo_list: [],
+      redo_list: []
+    })
+    context.clearRect(0, 0, width, height)
   }
 
   render () {
     return (
       <div className='container-fluid'>
         <Tools
-          undo={this.undo}
-          redo={this.redo}
+          undoRedo={this.undoRedo}
           color={this.state.color} 
           changeColor={this.changeColor} 
-          changeLineWidth={this.changeLineWidth} 
+          changeLineWidth={this.changeLineWidth}
+          clearWorkspace={this.clearWorkspace}
         />
         <Canvas 
           saveState={this.saveState} 

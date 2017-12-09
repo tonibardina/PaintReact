@@ -18,20 +18,23 @@ class Tools extends Component {
     this.props.changeColor(color.hex)
   }
 
-  setLine = (e) => {
+  setLineWidth = (e) => {
     this.props.changeLineWidth(e.currentTarget.name)
   }
 
-  undo = () => {
+  undoRedo = (e) => {
+   /* send Undo or Redo indo to father*/
     const canvas = document.querySelector('#canvas')
     const context = canvas.getContext('2d')
-    this.props.undo(canvas, context)
+    if (e.currentTarget.name === 'undo') {
+      this.props.undoRedo(canvas, context, 'undo')
+    } else {
+      this.props.undoRedo(canvas, context, 'redo')
+    }
   }
 
-  redo = () => {
-    const canvas = document.querySelector('#canvas')
-    const context = canvas.getContext('2d')
-    this.props.redo(canvas, context)
+  clearWorkspace = () => {
+    this.props.clearWorkspace()
   }
 
   render () {
@@ -44,14 +47,14 @@ class Tools extends Component {
         </Navbar.Header>
         <Nav>
           <NavItem 
-            onClick={this.undo} 
+            onClick={this.undoRedo} 
             eventKey={1} 
             name='undo'
           >
             <i className="fa fa-undo" aria-hidden="true"></i>
           </NavItem>
           <NavItem 
-            onClick={this.redo} 
+            onClick={this.undoRedo} 
             eventKey={2} 
             name='redo'
           >
@@ -84,11 +87,23 @@ class Tools extends Component {
             } onChangeComplete={ this.handleChangeColorPicker }/>
           </NavDropdown>
           <NavDropdown eventKey={4} title="Line" id="basic-nav-dropdown">
-            <img name={1} style={{padding: 10}} src={Line1} alt='1px Line' onClick={this.setLine} />
-            <img name={3} style={{padding: 10}} src={Line3} alt='3px Line' onClick={this.setLine} />
-            <img name={5} style={{padding: 10}} src={Line5} alt='5px Line' onClick={this.setLine} />
-            <img name={10} style={{padding: 10}} src={Line10} alt='10px Line' onClick={this.setLine} />
+            <img name={1} style={{padding: 10}} src={Line1} alt='1px Line' onClick={this.setLineWidth} />
+            <img name={3} style={{padding: 10}} src={Line3} alt='3px Line' onClick={this.setLineWidth} />
+            <img name={5} style={{padding: 10}} src={Line5} alt='5px Line' onClick={this.setLineWidth} />
+            <img name={10} style={{padding: 10}} src={Line10} alt='10px Line' onClick={this.setLineWidth} />
           </NavDropdown>
+          <NavItem 
+            onClick={this.clearWorkspace} 
+            eventKey={4} 
+            className='clearButton'
+          >
+            Clear
+          </NavItem>
+          <NavItem 
+            eventKey={5} 
+          >
+            Clear
+          </NavItem>
         </Nav>
       </Navbar>
     )

@@ -5,8 +5,6 @@ class Canvas extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      lineWidth: 35,
-      context: []
     }
   }
 
@@ -20,7 +18,6 @@ class Canvas extends Component {
     canvas.height = parseInt(sketchStyle.getPropertyValue('height'), 10)
     /* Send Workspace info to father */
     this.props.setCanvasWidthAndHeight(canvas.width, canvas.height)
-
     let mouse = {x: 0, y: 0}
     /* Mouse Capturing Work */
     canvas.addEventListener('mousemove', function (e) {

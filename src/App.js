@@ -90,6 +90,7 @@ class App extends Component {
           changeColor={this.changeColor} 
           changeLineWidth={this.changeLineWidth}
           clearWorkspace={this.clearWorkspace}
+          downloadCanvas={this.downloadCanvas}
         />
         <Canvas 
           saveState={this.saveState} 

@@ -8,12 +8,6 @@ import Line5 from './art/5pxLine.png'
 import Line10 from './art/10pxLine.png'
 
 class Tools extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-    }
-  }
-
   handleChangeColorPicker = (color) => {
     this.props.changeColor(color.hex)
   }
@@ -23,7 +17,7 @@ class Tools extends Component {
   }
 
   undoRedo = (e) => {
-   /* send Undo or Redo indo to father*/
+   /* send Undo or Redo to father*/
     const canvas = document.querySelector('#canvas')
     const context = canvas.getContext('2d')
     if (e.currentTarget.name === 'undo') {
@@ -96,11 +90,6 @@ class Tools extends Component {
             onClick={this.clearWorkspace} 
             eventKey={4} 
             className='clearButton'
-          >
-            Clear
-          </NavItem>
-          <NavItem 
-            eventKey={5} 
           >
             Clear
           </NavItem>

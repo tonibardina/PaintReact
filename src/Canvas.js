@@ -2,12 +2,6 @@ import React, { Component } from 'react'
 import './Canvas.css'
 
 class Canvas extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-    }
-  }
-
   componentDidMount () {
     /* Define Workspace */
     const canvas = document.querySelector('#canvas')

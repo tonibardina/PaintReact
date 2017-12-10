@@ -1,1 +1,1 @@
-![cool paint app]{https://imgur.com/a/BCSpo}
+[Imgur](https://i.imgur.com/Wa18gZg.png)

@@ -1,1 +1,1 @@
-![COOL PAINT APP]{https://imgur.com/Wa18gZg}
+![cool paint app]{https://imgur.com/Wa18gZg}

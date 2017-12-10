@@ -52,6 +52,11 @@ class Canvas extends Component {
     this.props.saveState(canvas)
   }
 
+  defineCanvasToDownload = () => {
+    const canvas = document.querySelector('#canvas')
+    this.props.defineCanvasToDownload(canvas)
+  }
+
   render () {
     return (
       <div 
@@ -62,7 +67,8 @@ class Canvas extends Component {
           ref={'canvas'} 
           id='canvas' 
           onMouseOver={this.setBrush} 
-          onMouseDown={this.saveState} 
+          onMouseDown={this.saveState}
+          onMouseOut={this.defineCanvasToDownload}
         />
       </div>
     )

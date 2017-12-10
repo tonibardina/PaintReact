@@ -93,6 +93,9 @@ class Tools extends Component {
           >
             Clear
           </NavItem>
+          <NavItem href={this.props.canvas} download='myAwesomePaint'>
+            <i className="fa fa-download" aria-hidden="true"></i>
+          </NavItem>
         </Nav>
       </Navbar>
     )

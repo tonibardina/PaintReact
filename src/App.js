@@ -10,6 +10,7 @@ class App extends Component {
       lineWidth: 10,
       undo_list: [],
       redo_list: [],
+      canvas: '',
       canvasWidth: 'Number',
       canvasHeight: 'Number',
     }
@@ -38,10 +39,11 @@ class App extends Component {
     keep_redo = keep_redo || false
     if(!keep_redo) {
       this.setState({
-        redo_list: []
+        redo_list: [],
       })
     }
-    (list || this.state.undo_list).push(canvas.toDataURL())   
+    (list || this.state.undo_list).push(canvas.toDataURL())
+    console.log(this.state)
   }
 
   restoreState = (canvas, context, pop, push) => {
@@ -53,7 +55,6 @@ class App extends Component {
       let restore_state = pop.pop()
       let image = new Image()
       image.src = restore_state
-      console.log(this.state)
       image.onload = function () {
         console.log([restore_state])
         context.clearRect(0, 0, width, height)
@@ -81,6 +82,12 @@ class App extends Component {
     context.clearRect(0, 0, width, height)
   }
 
+  defineCanvasToDownload = (canvas) => {
+    this.setState({
+      canvas: canvas.toDataURL()
+    })
+  }
+
   render () {
     return (
       <div className='container-fluid'>
@@ -90,13 +97,14 @@ class App extends Component {
           changeColor={this.changeColor} 
           changeLineWidth={this.changeLineWidth}
           clearWorkspace={this.clearWorkspace}
-          downloadCanvas={this.downloadCanvas}
+          canvas={this.state.canvas}
         />
         <Canvas 
           saveState={this.saveState} 
           lineWidth={this.state.lineWidth} 
           color={this.state.color}
           setCanvasWidthAndHeight={this.setCanvasWidthAndHeight}
+          defineCanvasToDownload={this.defineCanvasToDownload}
         />
       </div>
     )

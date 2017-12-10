@@ -76,7 +76,7 @@ class Tools extends Component {
                 '#641318',
                 '#A31E27',
                 '#B76D72',
-                '#C29598'
+                'red'
               ]
             } onChangeComplete={ this.handleChangeColorPicker }/>
           </NavDropdown>

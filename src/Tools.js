@@ -31,6 +31,26 @@ class Tools extends Component {
     this.props.clearWorkspace()
   }
 
+  downloadButtonIsIEOrNot = () => {
+    let isIE = /*@cc_on!@*/false || !!document.documentMode
+    if (isIE) {
+      return (
+        <NavItem onClick={() => {
+          navigator.msSaveBlob(this.props.canvas, 'myAwesomePaint')
+        }}>
+          <i className="fa fa-download" aria-hidden="true"></i>
+        </NavItem>
+      )
+    } else {
+      console.log(isIE)
+      return (
+        <NavItem href={this.props.canvas} download='myAwesomePaint'>
+          <i className="fa fa-download" aria-hidden="true"></i>
+        </NavItem>
+      )
+    }
+  }
+
   render () {
     return (
       <Navbar>
@@ -101,9 +121,7 @@ class Tools extends Component {
           >
             Clear
           </NavItem>
-          <NavItem href={this.props.canvas} download='myAwesomePaint'>
-            <i className="fa fa-download" aria-hidden="true"></i>
-          </NavItem>
+          {this.downloadButtonIsIEOrNot()}
         </Nav>
       </Navbar>
     )

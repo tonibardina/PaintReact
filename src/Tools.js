@@ -42,7 +42,6 @@ class Tools extends Component {
         </NavItem>
       )
     } else {
-      console.log(isIE)
       return (
         <NavItem href={this.props.canvas} download='myAwesomePaint'>
           <i className="fa fa-download" aria-hidden="true"></i>

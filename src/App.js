@@ -43,7 +43,6 @@ class App extends Component {
       })
     }
     (list || this.state.undo_list).push(canvas.toDataURL())
-    console.log(this.state)
   }
 
   restoreState = (canvas, context, pop, push) => {
@@ -56,7 +55,6 @@ class App extends Component {
       let image = new Image()
       image.src = restore_state
       image.onload = function () {
-        console.log([restore_state])
         context.clearRect(0, 0, width, height)
         context.drawImage(image, 0, 0, width, height, 0, 0, width, height)
       }

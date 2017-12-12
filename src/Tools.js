@@ -19,11 +19,12 @@ class Tools extends Component {
   undoRedo = (e) => {
    /* send Undo or Redo to father*/
     const canvas = document.querySelector('#canvas')
+    const canvasFile = canvas.toDataURL()
     const context = canvas.getContext('2d')
     if (e.currentTarget.name === 'undo') {
-      this.props.undoRedo(canvas, context, 'undo')
+      this.props.undoRedo(canvasFile, context, 'undo')
     } else {
-      this.props.undoRedo(canvas, context, 'redo')
+      this.props.undoRedo(canvasFile, context, 'redo')
     }
   }
 

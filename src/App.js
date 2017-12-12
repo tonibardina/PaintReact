@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Canvas from './Canvas'
-import Tools from './Tools'
+import Canvas from './components/Canvas'
+import Tools from './components/Tools'
 
 class App extends Component {
   constructor (props) {
@@ -71,12 +71,16 @@ class App extends Component {
   clearWorkspace = () => {
     const width = this.state.canvasWidth
     const height = this.state.canvasHeight
-    const context = document.querySelector('#canvas').getContext('2d')
     this.setState({
       undo_list: [],
       redo_list: []
     })
-    context.clearRect(0, 0, width, height)
+
+    const canvas = document.querySelector('#canvas')
+    if (canvas) {
+      const context = canvas.getContext('2d')
+      context.clearRect(0, 0, width, height)
+    }
   }
 
   defineCanvasToDownload = (canvas) => {

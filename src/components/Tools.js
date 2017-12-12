@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import './Tools.css'
+import '../style/Tools.css'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { BlockPicker } from 'react-color'
-import Line1 from './art/1pxLine.png'
-import Line3 from './art/3pxLine.png'
-import Line5 from './art/5pxLine.png'
-import Line10 from './art/10pxLine.png'
+import Line1 from '../art/1pxLine.png'
+import Line3 from '../art/3pxLine.png'
+import Line5 from '../art/5pxLine.png'
+import Line10 from '../art/10pxLine.png'
 
 class Tools extends Component {
   handleChangeColorPicker = (color) => {

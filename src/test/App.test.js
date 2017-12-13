@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme'
 import Adapter from './setUpTests'
 import sinon from 'sinon'
 
-import App from '../components/App'
+import App from '../App'
 import Tools from '../components/Tools'
 import Canvas from '../components/Canvas'
 
@@ -23,9 +23,9 @@ describe('App render test', () => {
   it('renders one div className="container-fluid" component', () => {
     const wrapper = shallow(<App />)
     expect(wrapper.find('.container-fluid')).to.have.length(1)
-  });
+  })
 
-});
+})
 
 describe('App methods test', () => {
 
@@ -35,9 +35,9 @@ describe('App methods test', () => {
       const wrapper = shallow(<App />)
       wrapper.instance().changeColor('green')
       expect(wrapper.state('color')).to.eql('green')
-    });
+    })
 
-  });
+  })
 
   describe('changeLineWidth', () => {
 
@@ -45,9 +45,9 @@ describe('App methods test', () => {
       const wrapper = shallow(<App />)
       wrapper.instance().changeLineWidth(20)
       expect(wrapper.state('lineWidth')).to.eql(20)
-    });
+    })
 
-  });
+  })
 
   describe('setCanvasWidthAndHeight', () => {
 
@@ -56,9 +56,9 @@ describe('App methods test', () => {
       wrapper.instance().setCanvasWidthAndHeight(20, 20)
       expect(wrapper.state('canvasWidth')).to.eql(20)
       expect(wrapper.state('canvasHeight')).to.eql(20)
-    });
+    })
 
-  });
+  })
 
   describe('saveState', () => {
 
@@ -75,9 +75,9 @@ describe('App methods test', () => {
       /* If we pass keep_redo argument as false, redo_list is setted to [] */
       wrapper.instance().saveState('someCanvasToPush', null, false)
       expect(wrapper.state('redo_list')).to.eql([])
-    });
+    })
 
-  });
+  })
 
   describe('restoreState', () => {
 
@@ -91,9 +91,9 @@ describe('App methods test', () => {
       expect(wrapper.state('undo_list')).to.eql([])
       /* Inside restoreState function, saveState function is called with the push argument passed as saveState: 'list' argument, in this case redo_list */
       expect(wrapper.state('redo_list')).to.eql(['someCanvasToPush'])
-    });
+    })
 
-  });
+  })
 
   describe('undoRedo', () => {
 
@@ -104,9 +104,9 @@ describe('App methods test', () => {
       /* undoRedo argument: value, defines what will be the pull argument of restoreState method */
       wrapper.instance().undoRedo('someCanvasToPush', 'context', 'undo')
       expect(wrapper.state('undo_list')).to.eql([])
-    });
+    })
 
-  });
+  })
 
   describe('clearWorkspace', () => {
 
@@ -114,9 +114,9 @@ describe('App methods test', () => {
       const wrapper = shallow(<App />)
       wrapper.instance().clearWorkspace()
       expect(wrapper.state('undo_list')).to.eql([])
-    });
+    })
 
-  });
+  })
 
   describe('defineCanvasToDownload', () => {
 
@@ -124,11 +124,11 @@ describe('App methods test', () => {
       const wrapper = shallow(<App />)
       wrapper.instance().defineCanvasToDownload('canvasToDownload')
       expect(wrapper.state('canvas')).to.eql('canvasToDownload')
-    });
+    })
 
-  });
+  })
 
-});
+})
 
 
 

@@ -16,11 +16,11 @@ class Tools extends Component {
     this.props.changeLineWidth(e.currentTarget.name)
   }
 
-  undoRedo = (e) => {
+  undoRedoSelect = (e) => {
    /* send Undo or Redo to father*/
     const canvas = document.querySelector('#canvas')
     const canvasFile = canvas.toDataURL()
-    const context = canvas.getContext('2d')
+    const context = document.querySelector('#canvas').getContext('2d')
     if (e.currentTarget.name === 'undo') {
       this.props.undoRedo(canvasFile, context, 'undo')
     } else {
@@ -42,14 +42,14 @@ class Tools extends Component {
         </Navbar.Header>
         <Nav>
           <NavItem 
-            onClick={this.undoRedo} 
+            onClick={this.undoRedoSelect} 
             eventKey={1} 
             name='undo'
           >
             <i className="fa fa-undo" aria-hidden="true"></i>
           </NavItem>
           <NavItem 
-            onClick={this.undoRedo} 
+            onClick={this.undoRedoSelect} 
             eventKey={2} 
             name='redo'
           >
@@ -81,23 +81,46 @@ class Tools extends Component {
               ]
             } onChangeComplete={ this.handleChangeColorPicker }/>
           </NavDropdown>
-          <NavDropdown eventKey={4} title="Line" id="basic-nav-dropdown">
+          <NavDropdown 
+            eventKey={4} 
+            title="Line" 
+            id="basic-nav-dropdown">
             <MenuItem>
-              <img name={1} style={{padding: 10}} src={Line1} alt='1px Line' onClick={this.setLineWidth} />
+              <img 
+                name={1} 
+                id={'line1'} 
+                style={{padding: 10}} 
+                src={Line1} alt='1px Line' 
+                onClick={this.setLineWidth} />
             </MenuItem>
             <MenuItem>
-              <img name={3} style={{padding: 10}} src={Line3} alt='3px Line' onClick={this.setLineWidth} />
+              <img 
+                name={3} 
+                id={'line3'} 
+                style={{padding: 10}} 
+                src={Line3} alt='3px Line' 
+                onClick={this.setLineWidth} />
             </MenuItem>
             <MenuItem>
-              <img name={5} style={{padding: 10}} src={Line5} alt='5px Line' onClick={this.setLineWidth} />
+              <img 
+                name={5} 
+                id={'line5'} 
+                style={{padding: 10}} 
+                src={Line5} alt='5px Line' 
+                onClick={this.setLineWidth} />
             </MenuItem>
             <MenuItem>
-              <img name={10} style={{padding: 10}} src={Line10} alt='10px Line' onClick={this.setLineWidth} />
+              <img 
+                name={10} 
+                id={'line10'} 
+                style={{padding: 10}} 
+                src={Line10} alt='10px Line' 
+                onClick={this.setLineWidth} />
             </MenuItem>
           </NavDropdown>
           <NavItem 
             onClick={this.clearWorkspace} 
-            eventKey={4} 
+            eventKey={5} 
             className='clearButton'
           >
             Clear

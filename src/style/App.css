@@ -1,0 +1,9 @@
+canvas#canvas {
+  cursor: crosshair;
+}
+
+.fa-arrow-right {
+  color: white;
+  background-color: white;
+}
+

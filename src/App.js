@@ -1,55 +1,95 @@
 import React, { Component } from 'react'
-import Canvas from './components/Canvas'
 import Tools from './components/Tools'
+import './style/App.css'
 
 class App extends Component {
   constructor (props) {
     super(props)
+    this.mouse = {
+      x: 0, 
+      y: 0,
+      pressed: false
+    }
     this.state = {
-      color: 'red',
-      lineWidth: 10,
       undo_list: [],
       redo_list: [],
-      canvasWidth: 'Number',
-      canvasHeight: 'Number',
     }
   }
 
+  componentDidCatch(error, info) {
+    console.info(info)
+    console.error(error)
+  }
+
+  componentDidMount () {
+    const sketch = document.querySelector('#sketch')
+    let sketchStyle = getComputedStyle(sketch)
+    this.canvas.width = parseInt(sketchStyle.getPropertyValue('width'), 10)
+    this.canvas.height = parseInt(sketchStyle.getPropertyValue('height'), 10)
+    this.context.strokeStyle = 'red'
+    this.context.lineWidth = 10
+    this.context.lineCap = 'round'
+    this.context.lineJoin = 'round'
+  }
+
+  handleMove = (e) => {
+    this.mouse.x = e.pageX - this.canvas.offsetLeft
+    this.mouse.y = e.pageY - this.canvas.offsetTop
+    if (this.mouse.pressed) {
+      this.context.lineTo(this.mouse.x, this.mouse.y)
+      this.context.stroke()
+    }
+  }
+
+  handleMouseDown = () => {
+    let file = this.canvas.toDataURL()
+    this.mouse.pressed = true
+    this.context.beginPath()
+    this.context.moveTo(this.mouse.x, this.mouse.y)
+    this.saveState(file)
+  }
+
+  handleMouseUp = () => {
+    this.mouse.pressed = false
+  }
+
+  handleMouseOut = () => {
+    this.mouse.pressed = false
+  }
+
   changeColor = (color) => {
-    this.setState({
-      color: color
-    })
+    this.context.strokeStyle = color
   }
 
   changeLineWidth = (value) => {
-    this.setState({
-      lineWidth: value
-    })
+    this.context.lineWidth = value
   }
 
-  setCanvasWidthAndHeight = (valueX, valueY) => {
-    this.setState({
-      canvasHeight: valueY,
-      canvasWidth: valueX
-    })
+  undo = () => {
+    this.restoreState(this.state.undo_list, this.state.redo_list)
   }
 
-  saveState = (canvas, list, keep_redo) => {
+  redo = () => {
+    this.restoreState(this.state.redo_list, this.state.undo_list)
+  }
+
+  saveState = (file, list, keep_redo) => {
     keep_redo = keep_redo || false
     if(!keep_redo) {
       this.setState({
         redo_list: [],
       })
     }
-    (list || this.state.undo_list).push(canvas)
+    (list || this.state.undo_list).push(file)
   }
 
-  restoreState = (canvas, context, pop, push) => {
-    const width = this.state.canvasWidth
-    const height = this.state.canvasHeight
-
+  restoreState = (pop, push) => {
+    let file = this.canvas.toDataURL()
+    const width = this.canvas.width 
+    const height = this.canvas.height
+    const context = this.context
     if(pop.length) {
-      this.saveState(canvas, push, true)
+      this.saveState(file, push, true)
       let restore_state = pop.pop()
       let image = new Image()
       image.src = restore_state
@@ -60,53 +100,47 @@ class App extends Component {
     }
   }
 
-  undoRedo = (canvas, context, value) => {
-    if (value === 'undo') {
-      this.restoreState(canvas, context, this.state.undo_list, this.state.redo_list)
-    } else {
-      this.restoreState(canvas, context, this.state.redo_list, this.state.undo_list)
-    }
-  }
-
   clearWorkspace = () => {
-    const width = this.state.canvasWidth
-    const height = this.state.canvasHeight
+    const width = this.canvas.width
+    const height = this.canvas.height
     this.setState({
       undo_list: [],
       redo_list: []
     })
-
-    const canvas = document.querySelector('#canvas')
-    if (canvas) {
-      const context = canvas.getContext('2d')
-      context.clearRect(0, 0, width, height)
-    }
-  }
-
-  defineCanvasToDownload = (canvas) => {
-    this.setState({
-      canvas: canvas
-    })
+    this.context.clearRect(0, 0, width, height)
   }
 
   render () {
     return (
-      <div className='container-fluid'>
+      <div style={{padding: 0}} className='container-fluid'>
         <Tools
-          color={this.state.color}
-          canvas={this.state.canvas}
-          undoRedo={this.undoRedo}
+          /*downloadFile={this.canvas}*/
+          undo={this.undo}
+          redo={this.redo}
           changeColor={this.changeColor} 
           changeLineWidth={this.changeLineWidth}
           clearWorkspace={this.clearWorkspace}
         />
-        <Canvas
-          color={this.state.color}
-          lineWidth={this.state.lineWidth}
-          saveState={this.saveState} 
-          setCanvasWidthAndHeight={this.setCanvasWidthAndHeight}
-          defineCanvasToDownload={this.defineCanvasToDownload}
+        <div 
+        className='canvasContainer' 
+        style={{height: window.innerHeight, width: '100%'}} 
+        id='sketch'>
+        <canvas
+          ref={(c) => {
+              if (c) {
+                  this.canvas = c
+                  this.context = c.getContext('2d')
+              }
+          }}
+          id='canvas'
+          style={{height: window.innerHeight, width: '100%'}}
+          onMouseMove={this.handleMove}
+          onMouseOver={this.handleMouseOver} 
+          onMouseDown={this.handleMouseDown}
+          onMouseUp={this.handleMouseUp}
+          onMouseOut={this.handleMouseOut}
         />
+      </div>
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Tools from './components/Tools'
 import './style/App.css'
+import {Colors1, Colors2} from './components/ColorsPalettes'
 
 class App extends Component {
   constructor (props) {
@@ -13,11 +14,15 @@ class App extends Component {
     this.state = {
       undo_list: [],
       redo_list: [],
+      lineColor: 'red',
+      lineWidth: 10,
+      colorPalette: Colors1(),
     }
   }
 
-  componentDidMount () {
-    this.context.lineWidth = 10
+  componentDidUpdate () {
+    this.context.lineWidth = this.state.lineWidth
+    this.context.strokeStyle = this.state.lineColor
     this.context.lineCap = 'round'
     this.context.lineJoin = 'round'
   }
@@ -45,14 +50,25 @@ class App extends Component {
 
   handleMouseOut = () => {
     this.mouse.pressed = false
+    this.file = this.canvas.toDataURL()
   }
 
-  changeColor = (color) => {
-    this.context.strokeStyle = color
+  setLineColor = (color) => {
+    this.setState({
+      lineColor: color
+    })
   }
 
-  changeLineWidth = (value) => {
-    this.context.lineWidth = value
+  setColorPalette = (palette) => {
+    this.setState({
+      colorPalette: palette
+    })
+  }
+
+  setLineWidth = (value) => {
+    this.setState({
+      lineWidth: value
+    })
   }
 
   undo = () => {
@@ -104,24 +120,16 @@ class App extends Component {
     return (
       <div style={{padding: 0}} className='container-fluid'>
         <Tools
-          /*downloadFile={this.canvas}*/
           undo={this.undo}
           redo={this.redo}
-          changeColor={this.changeColor} 
-          changeLineWidth={this.changeLineWidth}
+          setLineColor={this.setLineColor} 
+          color={this.state.lineColor}
+          palette={this.state.colorPalette}
+          setLineWidth={this.setLineWidth}
+          setColorPalette={this.setColorPalette}
           clearWorkspace={this.clearWorkspace}
+          downloadFile={this.file}
         />
-        <div 
-        className='canvasContainer' 
-        style={{height: '100%', width: '100%'}} 
-        ref={(s) => {
-              if (s) {
-                this.sketch = s
-                this.canvasWidth = s.style.width
-                this.canvasHeight = s.style.height
-              }
-          }}
-        >
         <canvas
           ref={(c) => {
             if (c) {
@@ -130,14 +138,14 @@ class App extends Component {
             }
           }}
           id='canvas'
-          style={{height: '100%', width: '100%'}}
+          width={window.innerWidth}
+          height={window.innerHeight}
           onMouseMove={this.handleMove}
           onMouseOver={this.handleMouseOver} 
           onMouseDown={this.handleMouseDown}
           onMouseUp={this.handleMouseUp}
           onMouseOut={this.handleMouseOut}
         />
-      </div>
       </div>
     )
   }

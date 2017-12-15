@@ -8,36 +8,22 @@ import Line5 from '../art/5pxLine.png'
 import Line10 from '../art/10pxLine.png'
 import {Colors1, Colors2} from './ColorsPalettes'
 
-class Tools extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      color: 'red',
-      palette: Colors2()
-    }
-  }
 
+class Tools extends Component {
   handleChangeColorPicker = (color) => {
-    this.setState({
-      color: color.hex
-    })
-    this.props.changeColor(color.hex)
+    this.props.setLineColor(color.hex)
   }
 
   handleClickColorPalette = (e) => {
     if (e.target.name === 'Colors1') {
-      this.setState({
-        palette: Colors1()
-      })
+      this.props.setColorPalette(Colors1())
     } else {
-      this.setState({
-        palette: Colors2()
-      })
+      this.props.setColorPalette(Colors2())
     }
   }
 
   setLineWidth = (e) => {
-    this.props.changeLineWidth(e.currentTarget.name)
+    this.props.setLineWidth(e.currentTarget.name)
   }
 
   undo = () => {
@@ -58,7 +44,7 @@ class Tools extends Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <a id='title' style={{color: this.state.color}}>Paint</a>
+              <a id='title' style={{color: this.props.color}}>Paint</a>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
@@ -87,8 +73,8 @@ class Tools extends Component {
             </NavDropdown>
             <NavDropdown eventKey={4} title="Color" id="color-dropdown">
               <BlockPicker 
-                color={this.state.color} 
-                colors={this.state.palette} 
+                color={this.props.color} 
+                colors={this.props.palette} 
                 onChangeComplete={ this.handleChangeColorPicker }
               />
             </NavDropdown>
@@ -136,9 +122,9 @@ class Tools extends Component {
             >
               Clear
             </NavItem>
-            {/*<NavItem href={this.props.downloadFile} download='myAwesomePaint'>
+            <NavItem href={this.props.downloadFile} download='myAwesomePaint'>
               <i className="fa fa-download" aria-hidden="true"></i>
-            </NavItem>*/}
+            </NavItem>
           </Nav>
         </Navbar>
       </div>

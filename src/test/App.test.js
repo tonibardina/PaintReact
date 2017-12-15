@@ -10,9 +10,7 @@ describe('App render test', () => {
     const component = renderer.create(
       <App />
     )
-    component.getComputedStyle = () => {
-      
-    }
+
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })

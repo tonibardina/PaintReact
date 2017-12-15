@@ -16,17 +16,7 @@ class App extends Component {
     }
   }
 
-  componentDidCatch(error, info) {
-    console.info(info)
-    console.error(error)
-  }
-
   componentDidMount () {
-    const sketch = document.querySelector('#sketch')
-    let sketchStyle = getComputedStyle(sketch)
-    this.canvas.width = parseInt(sketchStyle.getPropertyValue('width'), 10)
-    this.canvas.height = parseInt(sketchStyle.getPropertyValue('height'), 10)
-    this.context.strokeStyle = 'red'
     this.context.lineWidth = 10
     this.context.lineCap = 'round'
     this.context.lineJoin = 'round'
@@ -123,17 +113,24 @@ class App extends Component {
         />
         <div 
         className='canvasContainer' 
-        style={{height: window.innerHeight, width: '100%'}} 
-        id='sketch'>
-        <canvas
-          ref={(c) => {
-              if (c) {
-                  this.canvas = c
-                  this.context = c.getContext('2d')
+        style={{height: '100%', width: '100%'}} 
+        ref={(s) => {
+              if (s) {
+                this.sketch = s
+                this.canvasWidth = s.style.width
+                this.canvasHeight = s.style.height
               }
           }}
+        >
+        <canvas
+          ref={(c) => {
+            if (c) {
+              this.canvas = c
+              this.context = c.getContext('2d')
+            }
+          }}
           id='canvas'
-          style={{height: window.innerHeight, width: '100%'}}
+          style={{height: '100%', width: '100%'}}
           onMouseMove={this.handleMove}
           onMouseOver={this.handleMouseOver} 
           onMouseDown={this.handleMouseDown}

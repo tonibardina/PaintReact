@@ -1,24 +1,23 @@
-// import React from 'react'
-// import { expect } from 'chai'
-// import { shallow, mount } from 'enzyme'
-// import Adapter from './setUpTests'
-// import sinon from 'sinon'
+import React from 'react'
+import renderer from 'react-test-renderer'
 
-// import App from '../App'
-// import Tools from '../components/Tools'
-// import Canvas from '../components/Canvas'
+import App from '../App'
+import Tools from '../components/Tools'
 
-// describe('App render test', () => {
+describe('App render test', () => {
 
-//   it('renders one <Tools /> component', () => {
-//     const wrapper = shallow(<App />)
-//     expect(wrapper.find(Tools)).to.have.length(1)
-//   })
+  it('renders one <Tools /> component', () => {
+    const component = renderer.create(
+      <App />
+    )
+    component.getComputedStyle = () => {
+      
+    }
+    let tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 
-//   it('renders one <Canvas /> component', () => {
-//     const wrapper = shallow(<App />)
-//     expect(wrapper.find(Canvas)).to.have.length(1)
-//   })
+})
 
 //   it('renders one div className="container-fluid" component', () => {
 //     const wrapper = shallow(<App />)

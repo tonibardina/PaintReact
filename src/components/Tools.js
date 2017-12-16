@@ -146,7 +146,11 @@ class Tools extends Component {
             >
               Clear
             </NavItem>
-            <NavItem href={this.state.file} download='myAwesomePaint'>
+            <NavItem 
+              href={this.state.file} 
+              download='myAwesomePaint'
+              id='downloadButton'
+            >
               <i className="fa fa-download" aria-hidden="true"></i>
             </NavItem>
           </Nav>

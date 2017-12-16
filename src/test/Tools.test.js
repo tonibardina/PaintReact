@@ -96,4 +96,60 @@ describe('Tool', () => {
     expect(workspace).toBe(0)
   })
 
+  it('should handleChangeColorPicker set state and setLineColor', () => {
+    
+    const color = {
+      hex: '#84CAE7'
+    }
+    let lineColor = 'blue'
+
+    function setTool (inst) {}
+    function setLineColor (color) { lineColor = color }
+
+    const wrapper = shallow(
+      <Tools
+        setSelf={setTool}
+        setLineColor={setLineColor}
+      />
+    )
+
+    wrapper.instance().handleChangeColorPicker(color)
+    expect(wrapper.instance().state.color).toBe('#84CAE7')
+    expect(lineColor).toBe('#84CAE7')
+  })
+
+  it('should set palette state', () => {
+    
+    const e = {
+      target: {
+        name: 'Colors2'
+      }
+    }
+
+    const palette = 
+    [
+
+      '#581845', '#900C3F', '#C70039',
+      '#FF5733', '#FF9B70', '#E0FF69',
+      '#66DE87', '#1E5B65', '#E5F9BD',
+      '#A0E418', '#7FB414', '#525050',
+      '#F2FCFC', '#BDF1F6', '#8FBAF3',
+      '#0245A3', '#F5F5F5', '#ECECEC',
+      '#FACC2E', '#27B1BE'
+    
+    ]
+
+    function setTool (inst) {}
+
+    const wrapper = shallow(
+      <Tools
+        setSelf={setTool}
+      />
+    )
+
+    wrapper.instance().handleClickColorPalette(e)
+    expect(wrapper.instance().state.palette[0]).toBe(palette[0])
+
+  })
+
 })

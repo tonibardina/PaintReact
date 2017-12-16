@@ -1014,6 +1014,7 @@ exports[`Tool should build successfully 1`] = `
           <a
             download="myAwesomePaint"
             href="#"
+            id="downloadButton"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"

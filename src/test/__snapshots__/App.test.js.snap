@@ -1043,7 +1043,6 @@ exports[`App should build successfully 1`] = `
     onMouseDown={[Function]}
     onMouseMove={[Function]}
     onMouseOut={[Function]}
-    onMouseOver={undefined}
     onMouseUp={[Function]}
     width={1024}
   />

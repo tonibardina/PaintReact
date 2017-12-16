@@ -81,7 +81,7 @@ class App extends Component {
     const { height, width } = this.canvas
     this.undo_list = []
     this.redo_list = []
-    this.context.clearRect(0, 0, width, height)
+    if (this.context) { this.context.clearRect(0, 0, width, height) }
   }
 
   setTool = (tool) => this.tool = tool
@@ -109,7 +109,6 @@ class App extends Component {
           width={window.innerWidth}
           height={window.innerHeight}
           onMouseMove={this.handleMove}
-          onMouseOver={this.handleMouseOver} 
           onMouseDown={this.handleMouseDown}
           onMouseUp={this.handleMouseUp}
           onMouseOut={this.handleMouseOut}

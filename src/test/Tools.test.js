@@ -1,95 +1,99 @@
-/*import React from 'react'
-import { shallow, mount } from 'enzyme'
+import React from 'react'
+import renderer from 'react-test-renderer'
+import {shallow, mount} from 'enzyme'
 import Adapter from './setUpTests'
-import sinon from 'sinon'
 
 import Tools from '../components/Tools'
-import App from '../App'
 
-describe('Tools render test', () => {
+describe('Tool', () => {
 
-  it('one <a id="title"/> component', () => {
-    const wrapper = mount(<Tools />)
-    expect(wrapper.find('#title')).to.have.length(1)
+  it('should build successfully', () => {
+    let _inst 
+    function setTool (inst) {
+      return _inst = inst
+    }
+    const component = renderer.create(
+      <Tools
+        setSelf={setTool}
+      />
+    )
+    expect(component.toJSON()).toMatchSnapshot()
+    expect(_inst).toBe(component.getInstance('setTool'))
   })
 
-  it('three icons', () => {
-    const wrapper = mount(<Tools />)
-    expect(wrapper.find('.fa')).to.have.length(3)
-    expect(wrapper.find('.fa-download')).to.have.length(1)
-    expect(wrapper.find('.fa-repeat')).to.have.length(1)
-    expect(wrapper.find('.fa-undo')).to.have.length(1)
+  it('should undo successfully', () => {
+    function setTool (inst) {}
+  
+    let undoCalled = 0
+
+    function undo () {
+      undoCalled++
+    }
+
+    const wrapper = shallow(<Tools
+      setSelf={setTool}
+      undo={undo}
+      />)
+
+    wrapper.find('#undo').simulate('click')
+
+    expect(undoCalled).toBe(1)
   })
 
-  describe('Bootstrap components', () => {
+  it('should redo successfully', () => {
+    function setTool (inst) {}
+  
+    let redoCalled = 0
 
-    it('renders one Navbar component', () => {
-      const wrapper = mount(<Tools />)
-      expect(wrapper.find('Navbar')).to.have.length(1)
-    })
+    function redo () {
+      redoCalled++
+    }
 
-    it('renders 4 NavItem components', () => {
-      const wrapper = mount(<Tools />)
-      expect(wrapper.find('NavItem')).to.have.length(4)
-    })
+    const wrapper = shallow(<Tools
+      setSelf={setTool}
+      redo={redo}
+      />)
 
-    it('one Nav component', () => {
-      const wrapper = mount(<Tools />)
-      expect(wrapper.find('Nav')).to.have.length(1)
-    })
+    wrapper.find('#redo').simulate('click')
 
-    it('one NavDropdown component', () => {
-      const wrapper = mount(<Tools />)
-      expect(wrapper.find('NavDropdown')).to.have.length(2)
-    })
+    expect(redoCalled).toBe(1)
+  })
 
-    it('one NavDropdown component', () => {
-      const wrapper = mount(<Tools />)
-      expect(wrapper.find('NavDropdown')).to.have.length(2)
-    })
+  it('should setLineWidth successfully', () => {
+    function setTool (inst) {}
+  
+    let lineWidth = 0
 
-    it('one MenuItem component', () => {
-      const wrapper = mount(<Tools />)
-      expect(wrapper.find('MenuItem')).to.have.length(4)
-    })
+    function setLineWidth (e) {
+      lineWidth = e
+    }
 
+    const wrapper = mount(<Tools
+      setSelf={setTool}
+      setLineWidth={setLineWidth}
+      />)
+
+    wrapper.find('#line5').simulate('click')
+
+    expect(lineWidth).toBe('5')
+  })
+
+  it('should clearWorkSpace successfully', () => {
+
+    let workspace = 100
+    function setTool (inst) {}
+    function clearWorkspace () { workspace = 0 }
+
+    const wrapper = shallow(
+      <Tools
+        setSelf={setTool}
+        clearWorkspace={clearWorkspace}
+      />
+    )
+
+    wrapper.find('#clearButton').simulate('click')
+
+    expect(workspace).toBe(0)
   })
 
 })
-
-describe('Tools methods', () => {
-
-  describe('setLineWidth', () => {
-
-    it('change fathers state lineWidth', () => {
-      const wrapper = mount(<App />)
-      wrapper.find('#line3').simulate('click')
-      expect(wrapper.state('lineWidth')).toBe('3')
-    })
-
-  })
-
-  describe('undoRedoSelect', () => {
-
-    it('calls undoRedo fathers function with an argument "undo" or " redo" ', () => {
-      const wrapper = mount(<App />)
-      wrapper.find('NavItem [eventKey=1]').simulate('click')
-      expect(wrapper.state('redo_list')).to.eql([])
-    })
-
-
-     it('should call getData', () => {
-        sinon.spy(Tools.prototype, 'undoRedoSelect')
-        mount(<Tools />)
-        expect(Tools.prototype.undoRedoSelect.calledOnce).to.be.true
-    })
-
-  })
-
-})
-*/
-
-
-
-
-

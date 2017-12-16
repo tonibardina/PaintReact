@@ -1,0 +1,1031 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tool should build successfully 1`] = `
+<div>
+  <nav
+    className="navbar navbar-default"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="navbar-header"
+      >
+        <a
+          className="navbar-brand"
+          id="title"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          Paint
+        </a>
+      </div>
+      <ul
+        className="nav navbar-nav"
+        role={null}
+      >
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            id="undo"
+            name="undo"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-undo"
+            />
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            id="redo"
+            name="redo"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-repeat"
+            />
+          </a>
+        </li>
+        <li
+          className="dropdown"
+          style={undefined}
+        >
+          <a
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="dropdown-toggle"
+            href="#"
+            id="color-dropdown"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            Palette
+             
+            <span
+              className="caret"
+            />
+          </a>
+          <ul
+            aria-labelledby="color-dropdown"
+            className="dropdown-menu"
+            role="menu"
+          >
+            <li
+              className=""
+              role="presentation"
+              style={undefined}
+            >
+              <a
+                href="#"
+                id="palette1"
+                name="Colors1"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                Color variety
+              </a>
+            </li>
+            <li
+              className=""
+              role="presentation"
+              style={undefined}
+            >
+              <a
+                href="#"
+                id="palette2"
+                name="Colors2"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                Colorhunt selection
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="dropdown"
+          style={undefined}
+        >
+          <a
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="dropdown-toggle"
+            href="#"
+            id="color-dropdown"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            Color
+             
+            <span
+              className="caret"
+            />
+          </a>
+          <ul
+            aria-labelledby="color-dropdown"
+            className="dropdown-menu"
+            role="menu"
+          >
+            <div
+              className="block-picker "
+              style={
+                Object {
+                  "MozBorderRadius": "6px",
+                  "MozBoxShadow": "0 1px rgba(0,0,0,.1)",
+                  "OBorderRadius": "6px",
+                  "OBoxShadow": "0 1px rgba(0,0,0,.1)",
+                  "WebkitBorderRadius": "6px",
+                  "WebkitBoxShadow": "0 1px rgba(0,0,0,.1)",
+                  "background": "#fff",
+                  "borderRadius": "6px",
+                  "boxShadow": "0 1px rgba(0,0,0,.1)",
+                  "msBorderRadius": "6px",
+                  "msBoxShadow": "0 1px rgba(0,0,0,.1)",
+                  "position": "relative",
+                  "width": 170,
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "borderColor": "transparent transparent #ff0000 transparent",
+                    "borderStyle": "solid",
+                    "borderWidth": "0 10px 10px 10px",
+                    "height": "0px",
+                    "left": "50%",
+                    "marginLeft": "-10px",
+                    "position": "absolute",
+                    "top": "-10px",
+                    "width": "0px",
+                  }
+                }
+              />
+              <div
+                style={
+                  Object {
+                    "MozBorderRadius": "6px 6px 0 0",
+                    "OBorderRadius": "6px 6px 0 0",
+                    "WebkitBorderRadius": "6px 6px 0 0",
+                    "WebkitJustifyContent": "center",
+                    "alignItems": "center",
+                    "background": "#ff0000",
+                    "borderRadius": "6px 6px 0 0",
+                    "display": "flex",
+                    "height": "110px",
+                    "justifyContent": "center",
+                    "msBorderRadius": "6px 6px 0 0",
+                    "position": "relative",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "color": "#fff",
+                      "fontSize": "18px",
+                      "position": "relative",
+                    }
+                  }
+                >
+                  #ff0000
+                </div>
+              </div>
+              <div
+                style={
+                  Object {
+                    "padding": "10px",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "marginRight": "-10px",
+                    }
+                  }
+                >
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#E8DAB2",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#E8DAB2"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#4F6D7A",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#4F6D7A"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#C0D6DF",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#C0D6DF"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#EAEAEA",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#EAEAEA"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#D44D5C",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#D44D5C"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#083452",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#083452"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#FF6B37",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#FF6B37"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#ECA400",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#ECA400"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#EAF8BF",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#EAF8BF"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#006992",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#006992"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#95FF9F",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#95FF9F"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#136F63",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#136F63"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#22AAA1",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#22AAA1"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#4CE0D2",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#4CE0D2"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#84CAE7",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#84CAE7"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#641318",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#641318"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#CB2631",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#CB2631"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#A31E27",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#A31E27"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "#B76D72",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="#B76D72"
+                    />
+                  </span>
+                  <span
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                  >
+                    <div
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      style={
+                        Object {
+                          "MozBorderRadius": "4px",
+                          "OBorderRadius": "4px",
+                          "WebkitBorderRadius": "4px",
+                          "background": "red",
+                          "borderRadius": "4px",
+                          "cursor": "pointer",
+                          "float": "left",
+                          "height": "22px",
+                          "marginBottom": "10px",
+                          "marginRight": "10px",
+                          "msBorderRadius": "4px",
+                          "outline": "none",
+                          "position": "relative",
+                          "width": "22px",
+                        }
+                      }
+                      tabIndex={0}
+                      title="red"
+                    />
+                  </span>
+                  <div
+                    style={
+                      Object {
+                        "clear": "both",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <input
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onKeyDown={[Function]}
+                    placeholder={undefined}
+                    spellCheck="false"
+                    style={
+                      Object {
+                        "MozBorderRadius": "4px",
+                        "MozBoxShadow": "inset 0 0 0 1px #ddd",
+                        "OBorderRadius": "4px",
+                        "OBoxShadow": "inset 0 0 0 1px #ddd",
+                        "WebkitBorderRadius": "4px",
+                        "WebkitBoxShadow": "inset 0 0 0 1px #ddd",
+                        "border": "0px",
+                        "borderRadius": "4px",
+                        "boxShadow": "inset 0 0 0 1px #ddd",
+                        "boxSizing": "border-box",
+                        "color": "#666",
+                        "fontSize": "12px",
+                        "height": "22px",
+                        "msBorderRadius": "4px",
+                        "msBoxShadow": "inset 0 0 0 1px #ddd",
+                        "outline": "none",
+                        "padding": "0 7px",
+                        "width": "100%",
+                      }
+                    }
+                    value="#FF0000"
+                  />
+                </div>
+              </div>
+            </div>
+          </ul>
+        </li>
+        <li
+          className="dropdown"
+          style={undefined}
+        >
+          <a
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="dropdown-toggle"
+            href="#"
+            id="basic-nav-dropdown"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            Line
+             
+            <span
+              className="caret"
+            />
+          </a>
+          <ul
+            aria-labelledby="basic-nav-dropdown"
+            className="dropdown-menu"
+            role="menu"
+          >
+            <li
+              className=""
+              role="presentation"
+              style={undefined}
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <img
+                  alt="1px Line"
+                  id="line1"
+                  name={1}
+                  onClick={[Function]}
+                  src="1pxLine.png"
+                  style={
+                    Object {
+                      "padding": 10,
+                    }
+                  }
+                />
+              </a>
+            </li>
+            <li
+              className=""
+              role="presentation"
+              style={undefined}
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <img
+                  alt="3px Line"
+                  id="line3"
+                  name={3}
+                  onClick={[Function]}
+                  src="3pxLine.png"
+                  style={
+                    Object {
+                      "padding": 10,
+                    }
+                  }
+                />
+              </a>
+            </li>
+            <li
+              className=""
+              role="presentation"
+              style={undefined}
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <img
+                  alt="5px Line"
+                  id="line5"
+                  name={5}
+                  onClick={[Function]}
+                  src="5pxLine.png"
+                  style={
+                    Object {
+                      "padding": 10,
+                    }
+                  }
+                />
+              </a>
+            </li>
+            <li
+              className=""
+              role="presentation"
+              style={undefined}
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <img
+                  alt="10px Line"
+                  id="line10"
+                  name={10}
+                  onClick={[Function]}
+                  src="10pxLine.png"
+                  style={
+                    Object {
+                      "padding": 10,
+                    }
+                  }
+                />
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="clearButton"
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            id="clearButton"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            Clear
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            download="myAwesomePaint"
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-download"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+`;

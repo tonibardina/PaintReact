@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Tools from './components/Tools'
 import './style/App.css'
-import {Colors1, Colors2} from './components/ColorsPalettes'
 
 class App extends Component {
   constructor (props) {
@@ -11,23 +10,17 @@ class App extends Component {
       y: 0,
       pressed: false
     }
-    this.state = {
-      undo_list: [],
-      redo_list: [],
-      lineColor: 'red',
-      lineWidth: 10,
-      colorPalette: Colors1(),
-    }
-  }
-
-  componentDidUpdate () {
-    this.context.lineWidth = this.state.lineWidth
-    this.context.strokeStyle = this.state.lineColor
-    this.context.lineCap = 'round'
-    this.context.lineJoin = 'round'
+    this.undo_list = []
+    this.redo_list = []
+    this.lineColor = 'red'
+    this.lineWidth = 10
   }
 
   handleMove = (e) => {
+    this.context.lineWidth = this.lineWidth
+    this.context.strokeStyle = this.lineColor
+    this.context.lineCap = 'round'
+    this.context.lineJoin = 'round'
     this.mouse.x = e.pageX - this.canvas.offsetLeft
     this.mouse.y = e.pageY - this.canvas.offsetTop
     if (this.mouse.pressed) {
@@ -44,55 +37,33 @@ class App extends Component {
     this.saveState(file)
   }
 
-  handleMouseUp = () => {
-    this.mouse.pressed = false
-  }
-
+  handleMouseUp = () => this.mouse.pressed = false
+  
   handleMouseOut = () => {
     this.mouse.pressed = false
-    this.file = this.canvas.toDataURL()
+    this.fileToDonwload = this.canvas.toDataURL()
+    this.tool.downloadFile(this.fileToDonwload)
   }
 
-  setLineColor = (color) => {
-    this.setState({
-      lineColor: color
-    })
-  }
+  setLineColor = (color) => this.lineColor = color
 
-  setColorPalette = (palette) => {
-    this.setState({
-      colorPalette: palette
-    })
-  }
+  setLineWidth = (value) => this.lineWidth = value
 
-  setLineWidth = (value) => {
-    this.setState({
-      lineWidth: value
-    })
-  }
+  undo = () => this.restoreState(this.undo_list, this.redo_list)
 
-  undo = () => {
-    this.restoreState(this.state.undo_list, this.state.redo_list)
-  }
-
-  redo = () => {
-    this.restoreState(this.state.redo_list, this.state.undo_list)
-  }
+  redo = () => this.restoreState(this.redo_list, this.undo_list)
 
   saveState = (file, list, keep_redo) => {
     keep_redo = keep_redo || false
     if(!keep_redo) {
-      this.setState({
-        redo_list: [],
-      })
+      this.redo_list = []
     }
-    (list || this.state.undo_list).push(file)
+    (list || this.undo_list).push(file)
   }
 
   restoreState = (pop, push) => {
     let file = this.canvas.toDataURL()
-    const width = this.canvas.width 
-    const height = this.canvas.height
+    const { height, width } = this.canvas
     const context = this.context
     if(pop.length) {
       this.saveState(file, push, true)
@@ -107,14 +78,13 @@ class App extends Component {
   }
 
   clearWorkspace = () => {
-    const width = this.canvas.width
-    const height = this.canvas.height
-    this.setState({
-      undo_list: [],
-      redo_list: []
-    })
+    const { height, width } = this.canvas
+    this.undo_list = []
+    this.redo_list = []
     this.context.clearRect(0, 0, width, height)
   }
+
+  setTool = (tool) => this.tool = tool
 
   render () {
     return (
@@ -123,12 +93,10 @@ class App extends Component {
           undo={this.undo}
           redo={this.redo}
           setLineColor={this.setLineColor} 
-          color={this.state.lineColor}
-          palette={this.state.colorPalette}
+          color={this.lineColor}
           setLineWidth={this.setLineWidth}
-          setColorPalette={this.setColorPalette}
           clearWorkspace={this.clearWorkspace}
-          downloadFile={this.file}
+          setSelf={this.setTool}
         />
         <canvas
           ref={(c) => {
